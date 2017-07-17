@@ -223,7 +223,7 @@ public class JestElasticsearchTemplate implements ElasticsearchOperations, Appli
 			ElasticsearchPersistentProperty property = idProperty.orElseThrow(() -> new IllegalArgumentException(String.format("No Id property for %s found", clazz.getSimpleName())));
 
 			mapping = buildMapping(clazz, persistentEntity.getIndexType(),
-					property.getFieldName(), persistentEntity.getParentType().orElse(null)).string();
+					property.getFieldName(), persistentEntity.getParentType()).string();
 		} catch (Exception e) {
 			throw new ElasticsearchException("Failed to build mapping for " + clazz.getSimpleName(), e);
 		}
